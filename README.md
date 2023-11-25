@@ -44,4 +44,4 @@ Once the application is running:
 - The application will generate and display a coding problem based on your selections.
 
 ## Contributing
-Contributions to the DS-Problem-Generator-Langchain are welcome! 
+Contributions to this Data Structures problems generator are welcome! 
