@@ -1,7 +1,7 @@
 # DS-Problem-Generator-Langchain
 
 ## Overview
-The DS-Problem-Generator-Langchain is an innovative application designed to support students in their data structures studies, particularly in preparation for exams. By allowing users to select a topic within data structures and specify a difficulty level, the application dynamically generates a coding problem tailored to these preferences. This is made possible through the integration of Large Language Models (LLMs), which power the application's ability to present relevant and challenging questions.
+The DS-Problem-Generator-Langchain is an innovative application designed to support students in their data structures studies, particularly in preparation for exams. By allowing users to select a topic within data structures and specify a difficulty level, the application dynamically generates a coding problem tailored to these preferences. This is made possible through the integration with Large Language Models (LLMs), which power the application's ability to present relevant and challenging questions.
 
 ## Key Features
 - **Customization**: Users can choose from a variety of data structures topics and set the difficulty level (Easy, Medium, Hard) for the coding problem.
