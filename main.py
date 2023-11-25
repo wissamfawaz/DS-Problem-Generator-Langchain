@@ -1,9 +1,6 @@
-# Importing necessary libraries
 import langchain_helper as lch  # This imports the custom module for generating data structures problems.
 import streamlit as st          # Streamlit library for creating the web app interface.
-import textwrap                 # Textwrap module for formatting text.
 
-# Setting up the Streamlit web app interface
 st.title("Data Structures Problems Generator")  # Sets the title of the web app.
 
 # Creating a sidebar for user input
