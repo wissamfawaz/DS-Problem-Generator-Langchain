@@ -1,13 +1,9 @@
 from langchain.llms import OpenAI
 from langchain.prompts import PromptTemplate
 from langchain.chains import LLMChain
-from langchain.agents import load_tools
-from langchain.agents import initialize_agent
-from langchain.agents import AgentType
 from dotenv import load_dotenv
 
 load_dotenv()
-
 
 def generate_DS_problem(topic, difficulty):
     llm = OpenAI(temperature=0.7)
@@ -23,7 +19,6 @@ def generate_DS_problem(topic, difficulty):
         llm=llm, prompt=prompt_template_name, output_key="coding_problem")
     response = name_chain({'topic': topic, 'difficulty': difficulty})
     return response
-
 
 if __name__ == "__main__":
     print(generate_DS_problem("Recursion", "Easy")["coding_problem"])
