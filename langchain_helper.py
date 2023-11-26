@@ -42,7 +42,7 @@ def generate_DS_solution(problem):
         As a data structures instructor with expertise in solving coding challenges, I need you to solve the following problem:
         {problem}
         Organize your response as follows:
-        - Solution in Java: Present an optimal Java solution. The solution must be syntactically-valid, complete, and formatted using Markdown syntax. Use triple backticks (```) to enclose the code, ensuring it is displayed in a readable and well-formatted manner. Ensure that all the necessary import statements are included in the solution.
+        - Solution in Java: Present an optimal Java solution. The solution must be syntactically-valid and formatted using Markdown syntax. Use triple backticks (```) to enclose the code, ensuring it is displayed in a readable and well-formatted manner. Ensure that all the necessary import statements are included in the solution. Don't include comments in the code.
         - Complexity Analysis: Conclude with an analysis of the time and space complexity of the provided solution.
         """
     )
