@@ -1,4 +1,3 @@
-# Import necessary modules from LangChain and other libraries
 from langchain.llms import OpenAI
 from langchain.prompts import PromptTemplate
 from langchain.chains import LLMChain
@@ -18,9 +17,14 @@ def generate_DS_problem(topic, difficulty):
     prompt_template_name = PromptTemplate(
         input_variables=['topic', 'difficulty'],
         template="""
-        You are a data structures instructor that can develop coding problems based on a user-supplied data structures topic and difficulty level for the problem.
-        Generate a coding problem that is related to the {topic} topic. The problem should have {difficulty} difficulty level.
-        Format the answer as follows. First, show the question prompt. Then go to a new line and display a first clarifying example before going to a new line and showing a second clarifying example.
+        As a data structures instructor with expertise in creating coding challenges, I need a problem tailored to a specific topic and difficulty level.
+        Please generate a method design coding problem focused on the {topic} topic. Ensure that the problem is of {difficulty} difficulty level.
+        Format your response as follows:
+        1. Problem Statement: Present the question prompt clearly.
+        2. First Clarifying Example: On a new line, provide an example that helps clarify the problem.
+        3. Second Clarifying Example: Follow with another example on a new line for further clarification.
+        4. Solution in Java: Finally, present a Java solution. The solution must be syntactically-valid, well-documented, complete, and formatted using Markdown syntax. Use triple backticks (```) to enclose the code, ensuring it is displayed in a readable and well-formatted manner.
+        Ensure that the problem, examples, and solution are closely related to the specified topic and appropriate for the stated difficulty level.
         """
     )
 
