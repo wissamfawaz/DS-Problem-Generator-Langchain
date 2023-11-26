@@ -1,43 +1,61 @@
-from langchain.llms import OpenAI
-from langchain.prompts import PromptTemplate
-from langchain.chains import LLMChain
-from dotenv import load_dotenv
+from langchain.llms import OpenAI  # Import the OpenAI class for language model interactions
+from langchain.prompts import PromptTemplate  # Import PromptTemplate for structured language model prompts
+from langchain.chains import LLMChain  # Import LLMChain to create a chain of language model operations
+from dotenv import load_dotenv  # Import load_dotenv to load environment variables from a .env file
 
 # Load environment variables, particularly the OpenAI API key
 load_dotenv()
+coding_problem = ""
 
-# Define a function to generate data structures problems
 def generate_DS_problem(topic, difficulty):
-    # Initialize the OpenAI model with a specified temperature setting
-    # Temperature controls the randomness of the model's responses
+    # Initialize the OpenAI language model with a specific temperature setting
     llm = OpenAI(temperature=0.7)
 
-    # Define a prompt template with placeholders for topic and difficulty
-    # This template guides the model to generate a problem based on the inputs
+    # Create a prompt template for generating data structure problems
     prompt_template_name = PromptTemplate(
         input_variables=['topic', 'difficulty'],
         template="""
         As a data structures instructor with expertise in creating coding challenges, I need a problem tailored to a specific topic and difficulty level.
         Please generate a method design coding problem focused on the {topic} topic. It is essential that the problem is of {difficulty} difficulty level.
         Organize your response as follows:
-        1. Problem Statement: Clearly articulate the question prompt.
-        2. Clarifying Example: On a new line, provide an example that helps clarify the problem.
-        3. Solution in Java: Present an optimal Java solution. The solution must be syntactically-valid, well-documented, complete, and formatted using Markdown syntax. Use triple backticks (```) to enclose the code, ensuring it is displayed in a readable and well-formatted manner. Ensure that all the necessary import statements are included in the solution.
-        4. Complexity Analysis: Conclude with a detailed analysis of the time and space complexity of the provided solution, explaining how it achieves optimality.
+        - Problem Statement: Clearly articulate the question prompt.
+        - Clarifying Example: On a new line, provide an example that helps clarify the problem.
         """
     )
 
-    # Create a LangChain object (LLMChain) that uses the OpenAI model and the prompt template
+    # Create a language model chain for generating the problem
     name_chain = LLMChain(
         llm=llm, prompt=prompt_template_name, output_key="coding_problem")
 
-    # Generate a response based on the provided topic and the difficulty
+    # Generate the problem using the provided topic and difficulty
     response = name_chain({'topic': topic, 'difficulty': difficulty})
-
-    # Return the generated coding problem
     return response
 
-# Main execution block to test the function
+def generate_DS_solution(problem):
+    # Initialize the OpenAI language model with a specific temperature setting
+    llm = OpenAI(temperature=0.7)
+
+    # Create a prompt template for generating solutions to data structure problems
+    prompt_template_name = PromptTemplate(
+        input_variables=['problem'],
+        template="""
+        As a data structures instructor with expertise in solving coding challenges, I need you to solve the following problem:
+        {problem}
+        Organize your response as follows:
+        - Solution in Java: Present an optimal Java solution. The solution must be syntactically-valid, well-documented, complete, and formatted using Markdown syntax. Use triple backticks (```) to enclose the code, ensuring it is displayed in a readable and well-formatted manner. Ensure that all the necessary import statements are included in the solution.
+        - Complexity Analysis: Conclude with a detailed analysis of the time and space complexity of the provided solution, explaining how it achieves optimality.
+        """
+    )
+
+    # Create a language model chain for generating the solution
+    name_chain = LLMChain(
+        llm=llm, prompt=prompt_template_name, output_key="coding_problem_solution")
+
+    # Generate the solution using the provided problem
+    response = name_chain({'problem': coding_problem})
+    return response
+
+# Main execution block
 if __name__ == "__main__":
-    # Example usage of the function with "Recursion" as the topic and "Easy" as the difficulty
+    # Generate and print a data structure problem based on specified parameters
     print(generate_DS_problem("Recursion", "Easy")["coding_problem"])
