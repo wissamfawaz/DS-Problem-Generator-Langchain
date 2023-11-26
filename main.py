@@ -1,30 +1,39 @@
-import langchain_helper as lch  # This imports the custom module for generating data structures problems.
-import streamlit as st          # Streamlit library for creating the web app interface.
+import langchain_helper as lch  # Import the helper module for langchain operations
+import streamlit as st  # Import the Streamlit library for web app development
 
-st.title("Data Structures Problems Generator")  # Sets the title of the web app.
+# Set the title of the web application
+st.title("Data Structures Problems Generator")
 
-# Creating a sidebar for user input
-# Sidebar for selecting a topic
+# Define a list of topic options for the coding problems
+topic_options = [
+    "", "Recursion", "Stack", "Queue", "Linked List", "Priority Queue", "Hash Table", 
+    "Binary Tree", "Binary Search Tree", "Graph", "Depth-First Search", "Breadth-First Search"
+]
+
+# Create a sidebar selection box for choosing a topic
 topic = st.sidebar.selectbox(
-    "Choose a topic for the problem...",  # Text prompt for the select box.
-    ("Recursion", "Stacks", "Queues"))    # Options for the user to choose from.
+    "Choose a Topic for the Problem",
+    topic_options)
 
-# Sidebar for selecting difficulty level
+# Define a list of difficulty levels for the coding problems
+difficulty_levels = ["", "Easy", "Medium", "Hard"]
+
+# Create a sidebar selection box for choosing a difficulty level
 difficulty = st.sidebar.selectbox(
-    "Choose a difficulty level for the problem...",  # Text prompt for the select box.
-    ("Easy", "Medium", "Hard"))                      # Options for the user to choose from.
+    "Choose a Difficulty Level",
+    difficulty_levels)
 
-# Generating and displaying the problem
-if topic and difficulty:  # Checks if both topic and difficulty have been selected.
-    # Calls the generate_DS_problem function from the langchain_helper module
-    # with the selected topic and difficulty.
-    response = lch.generate_DS_problem(
-        topic=topic, difficulty=difficulty)
+# Create a submit button in the sidebar
+submit_button = st.sidebar.button("Submit")
 
-    st.subheader("Coding problem: ")  # Adds a subheader to the web app.
-
-    # Extracts the coding problem from the response.
+# Check if the submit button is clicked and both topic and difficulty are selected
+if submit_button and topic and difficulty:
+    # Call a function from the langchain_helper module to generate a coding problem
+    response = lch.generate_DS_problem(topic=topic, difficulty=difficulty)
+    
+    # Extract the coding problem from the response
     coding_problem = response["coding_problem"]
-
-    # Displays the coding problem on the web app.
+    
+    # Display the coding problem on the web application
+    st.subheader("Coding problem: ")
     st.markdown(coding_problem)
