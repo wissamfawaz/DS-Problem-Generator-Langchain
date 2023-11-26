@@ -19,13 +19,11 @@ def generate_DS_problem(topic, difficulty):
         template="""
         As a data structures instructor with expertise in creating coding challenges, I need a problem tailored to a specific topic and difficulty level.
         Please generate a method design coding problem focused on the {topic} topic. It is essential that the problem is of {difficulty} difficulty level.
-        Format your response as follows:
+        Organize your response as follows:
         1. Problem Statement: Clearly articulate the question prompt.
-        2. First Clarifying Example: On a new line, provide an example that helps clarify the problem.
-        3. Second Clarifying Example: Follow with another example on a new line for further clarification.
-        4. Solution in Java: Present an optimal Java solution. The solution must be syntactically-valid, well-documented, complete, and formatted using Markdown syntax. Use triple backticks (```) to enclose the code, ensuring it is displayed in a readable and well-formatted manner. Ensure that all the necessary import statements are included in the solution.
-        5. Complexity Analysis: Conclude with a detailed analysis of the time and space complexity of the provided solution, explaining how it achieves optimality.
-        Ensure finally that the problem, examples, and solution are closely related to the specified topic and appropriate for the stated difficulty level.
+        2. Clarifying Example: On a new line, provide an example that helps clarify the problem.
+        3. Solution in Java: Present an optimal Java solution. The solution must be syntactically-valid, well-documented, complete, and formatted using Markdown syntax. Use triple backticks (```) to enclose the code, ensuring it is displayed in a readable and well-formatted manner. Ensure that all the necessary import statements are included in the solution.
+        4. Complexity Analysis: Conclude with a detailed analysis of the time and space complexity of the provided solution, explaining how it achieves optimality.
         """
     )
 
